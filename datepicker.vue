@@ -1,14 +1,15 @@
 <template>
 
-  <div class="col-12 d-inline-block">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text fa fa-calendar"></div>
+  <div className="col-12 d-inline-block">
+    <div className="input-group">
+      <div className="input-group-prepend">
+        <div className="input-group-text fa fa-calendar"></div>
       </div>
-      <input type="text" :class="['form-control' , {'is-invalid' : invalidDate}]" placeholder="date" v-model="date"
+      <input type="text" :class="['form-control' , {'is-invalid' : invalidDate}]" placeholder="date"
+             v-model="date"
              :readonly="! editable" @focusin="show" @focusout="hide">
     </div>
-    <div class="text-danger text-sm" v-show="invalidDate" v-text="errorMessage"></div>
+    <div className="text-danger text-sm" v-show="invalidDate" v-text="errorMessage"></div>
   </div>
 </template>
 
@@ -70,14 +71,15 @@ export default {
     return {
       date: "",
       invalidDate: false,
-      uuid : "",
+      uuid: "",
+      inPanel: false
     }
   },
   created() {
     this.uuid = "di" + new Date().getTime() + Math.ceil(Math.random() * 200)
     if (!this.validateDate(this.jalali(this.modelValue))) {
       this.date = this.jalali(this.getToday());
-    }else{
+    } else {
       this.date = this.jalali(this.modelValue);
     }
     this.init()
@@ -85,8 +87,8 @@ export default {
   methods: {
     init() {
       let data = {
-        changeMonthRotateYear : true,
-        autoShow:false,
+        changeMonthRotateYear: true,
+        autoShow: false,
         showTodayBtn: this.showToday,
         showEmptyBtn: this.showEmpty,
         separatorChar: this.separator,
@@ -96,17 +98,17 @@ export default {
 
       if (this.validateDate(this.jalali(this.minDate))) {
         data.minDate = this.convertToValidOptionDate(this.jalali(this.minDate))
-      } else if (this.minDate === "today"){
+      } else if (this.minDate === "today") {
         data.minDate = "today"
-      }else{
+      } else {
         data.minDate = this.convertToValidOptionDate("1200/01/01")
       }
 
       if (this.validateDate(this.jalali(this.maxDate))) {
         data.maxDate = this.convertToValidOptionDate(this.jalali(this.maxDate))
-      } else if (this.maxDate === "today"){
+      } else if (this.maxDate === "today") {
         data.maxDate = "today"
-      }else{
+      } else {
         data.maxDate = this.convertToValidOptionDate("2000/01/01")
       }
 
@@ -116,9 +118,17 @@ export default {
     show(e) {
       this.init()
       jalaliDatepicker.show(e.target)
+      let panel = document.querySelector("jdp-container");
+      panel.addEventListener("mouseenter", evt => {
+        this.inPanel = true
+      })
+      panel.addEventListener("mouseleave", evt => {
+        this.inPanel = false
+      })
     },
     hide() {
-      jalaliDatepicker.hide()
+      if (!this.inPanel)
+        jalaliDatepicker.hide()
     },
     jalali: function (input) {
       try {
@@ -156,7 +166,7 @@ export default {
       }
       return yyyy + '/' + mm + '/' + dd;
     },
-    convertToValidOptionDate(date){
+    convertToValidOptionDate(date) {
       let ret = {}
       let dspl = date.split(this.separator)
       ret.year = parseInt(dspl[0])
@@ -177,17 +187,17 @@ export default {
         this.$emit("update:modelValue", this.errorDate)
       }
     },
-    minDate(){
+    minDate() {
       let curr = Date.parse(this.gregorian(this.date))
       let min = Date.parse(this.minDate)
-      if (curr < min){
+      if (curr < min) {
         this.date = this.jalali(this.minDate)
       }
     },
-    maxDate(){
+    maxDate() {
       let curr = Date.parse(this.gregorian(this.date))
       let max = Date.parse(this.maxDate)
-      if (curr > max){
+      if (curr > max) {
         this.date = this.jalali(this.maxDate)
       }
     }
