@@ -1,0 +1,29 @@
+{
+  "name": "vue3-simple-persisan-datapicker",
+  "version": "0.1.0",
+  "description": "It's a persian datepicker for vue3 js framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foroughi1380/vue3-simple-persian-datepicker.git"
+  },
+  "keywords": [
+    "persian",
+    "datepicker",
+    "vue",
+    "vue3"
+  ],
+  "author": "Mohammad Foroughi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/foroughi1380/vue3-simple-persian-datepicker/issues"
+  },
+  "homepage": "https://github.com/foroughi1380/vue3-simple-persian-datepicker#readme",
+  "dependencies": {
+    "@majidh1/jalalidatepicker": "^0.2.9",
+    "bootstrap": "^4.6.0"
+  }
+}
