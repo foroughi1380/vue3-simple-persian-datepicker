@@ -3,7 +3,7 @@
   <div className="col-12 d-inline-block">
     <div className="input-group">
       <div className="input-group-prepend">
-        <div className="input-group-text fa fa-calendar"></div>
+        <div className="input-group-text">📅</div>
       </div>
       <input type="text" :class="['form-control' , {'is-invalid' : invalidDate}]" placeholder="date"
              v-model="date"
