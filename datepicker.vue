@@ -6,7 +6,7 @@
         <div class="input-group-text fa fa-calendar"></div>
       </div>
       <input type="text" :class="['form-control' , {'is-invalid' : invalidDate}]" placeholder="date" v-model="date"
-             :readonly="! editable" @focusin="show">
+             :readonly="! editable" @focusin="show" @focusout="hide">
     </div>
     <div class="text-danger text-sm" v-show="invalidDate" v-text="errorMessage"></div>
   </div>
