@@ -1,6 +1,6 @@
 {
   "name": "vue3-simple-persisan-datapicker",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "It's a persian datepicker for vue3 js framework",
   "main": "index.js",
   "scripts": {
