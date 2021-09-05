@@ -24,6 +24,7 @@
   "homepage": "https://github.com/foroughi1380/vue3-simple-persian-datepicker#readme",
   "dependencies": {
     "@majidh1/jalalidatepicker": "^0.2.9",
-    "bootstrap": "^4.6.0"
+    "bootstrap": "^4.6.0",
+    "moment-jalaali": "^0.9.2"
   }
 }
