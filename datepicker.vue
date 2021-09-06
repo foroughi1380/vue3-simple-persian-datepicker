@@ -119,6 +119,7 @@ export default {
       this.init()
       jalaliDatepicker.show(e.target)
       let panel = document.querySelector("jdp-container");
+      //getting focus state
       panel.addEventListener("mouseenter", evt => {
         this.inPanel = true
       })
